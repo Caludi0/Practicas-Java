@@ -1,0 +1,7 @@
+Capa de Dominio:
+Esta capa contiene la lógica de negocio central. No debe tener dependencias de framework externos
+    *Spring, jpa, etc...
+
+Modelo de Dominio (Product.Java): Representa un producto en nuestro inventario. Es inmutable y contiene validaciones
+básicas.
+
