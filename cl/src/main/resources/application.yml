@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:invdb;DB_CLOSE_DELAY=-1 # Base de datos en memoria, no se cierra
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update # Crea o actualiza el esquema de la BBDD automáticamente
+    show-sql: true # Muestra las consultas SQL en consola
+    properties:
+      hibernate:
+        format_sql: true # Formatea el SQL mostrado
+  h2:
+    console:
+      enabled: true # Habilita la consola web de H2 (útil para debug)
+      path: /h2-console # Path para acceder a la consola (ej: http://localhost:8080/h2-console)
