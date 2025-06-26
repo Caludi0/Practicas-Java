@@ -18,8 +18,8 @@ public class ProductService implements ProductServicePort {
     // Depende del puerto de salida (abstracción), NO de la implementación concreta
     private final ProductPersistencePort persistence;
 
-    // Inyección de dependencias por contructor (preferible en Spring)
-    public  ProductService(ProductPersistencePort persistence) {
+    // Inyección de dependencias por constructor (preferible en Spring)
+    public ProductService(ProductPersistencePort persistence) {
         this.persistence = persistence;
     }
 
@@ -28,7 +28,7 @@ public class ProductService implements ProductServicePort {
         // Mapea el comando de entrada al modelo de dominio
         Product toSave = new Product(cmd.sku(), cmd.name(), cmd.quantity());
 
-        // Usa el puerto de salida pra interactuar con la persistencia
+        // Usa el puerto de salida para interactuar con la persistencia
         Product saved = persistence.save(toSave);
 
         // Mapea el modelo de dominio guardado al DTO de salida
@@ -39,7 +39,7 @@ public class ProductService implements ProductServicePort {
     public ProductDto getBySku(String sku) {
         // Usa el puerto de salida
         Product product = persistence.findBySku(sku)
-                .orElseThrow( () -> new ProductNotFoundException(sku));
+                .orElseThrow(() -> new ProductNotFoundException(sku)); // Lógica de negocio: si no existe, lanza excepción de dominio
 
         // Mapea al DTO de salida
         return ProductDto.fromDomain(product);
@@ -55,6 +55,4 @@ public class ProductService implements ProductServicePort {
                 .map(ProductDto::fromDomain)
                 .collect(Collectors.toList());
     }
-
-
 }

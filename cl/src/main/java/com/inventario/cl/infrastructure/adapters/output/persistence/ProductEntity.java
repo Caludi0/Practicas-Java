@@ -9,16 +9,16 @@ import lombok.Setter;
 
 @Entity // Indica que es una entidad JPA
 @Table(name = "products") // Nombre de la tabla en la BBDD
-@Getter //Genera getters
-@Setter // Genera setters (Necesarios para JPA/Hibernate
+@Getter // Genera getters
+@Setter // Genera setters (necesarios para JPA/Hibernate)
 @NoArgsConstructor // Constructor sin argumentos (necesario para JPA)
 public class ProductEntity {
 
     @Id // Indica que este campo es la clave primaria
-    private  String sku; // Usamos el SKU como clave primaria
-    private  String name;
-    private  int quantity;
+    private String sku; // Usamos el SKU como clave primaria
+    private String name;
+    private int quantity;
 
     // JPA necesita un constructor sin argumentos, los setters son para que pueda hidratar el objeto.
-    // Esto constasta con el modelo de dominio inmutable, que es intencional.
+    // Esto contrasta con el modelo de dominio inmutable, que es intencional.
 }

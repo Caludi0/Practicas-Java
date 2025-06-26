@@ -1,4 +1,5 @@
 package com.inventario.cl.domain.model;
+
 import java.util.Objects;
 
 // Usamos récord (Java 14+) o clase final para inmutabilidad
